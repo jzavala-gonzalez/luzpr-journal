@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>SAIDI - Q1 2024 | LuzPR Journal</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="../_observablehq/theme-air,near-midnight.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="../_observablehq/theme-air,near-midnight.css">
+<link rel="modulepreload" href="../_observablehq/client.js">
+<link rel="modulepreload" href="../_observablehq/runtime.js">
+<link rel="modulepreload" href="../_observablehq/stdlib.js">
+<link rel="modulepreload" href="../_npm/@observablehq/plot@0.6.14/_esm.js">
+<link rel="modulepreload" href="../_npm/d3@7.9.0/_esm.js">
+<link rel="modulepreload" href="../_npm/isoformat@0.2.1/_esm.js">
+<link rel="modulepreload" href="../_npm/interval-tree-1d@1.0.4/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-array@3.2.4/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-axis@3.0.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-brush@3.0.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-chord@3.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-color@3.1.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-contour@4.0.2/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-delaunay@6.0.4/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-dispatch@3.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-drag@3.0.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-dsv@3.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-ease@3.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-fetch@3.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-force@3.0.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-format@3.1.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-geo@3.1.1/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-hierarchy@3.1.2/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-interpolate@3.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-path@3.1.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-polygon@3.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-quadtree@3.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-random@3.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-scale@4.0.2/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-scale-chromatic@3.1.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-selection@3.0.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-shape@3.2.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-time@3.1.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-time-format@4.1.0/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-timer@3.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-transition@3.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/d3-zoom@3.0.0/_esm.js">
+<link rel="modulepreload" href="../_npm/binary-search-bounds@2.0.5/_esm.js">
+<link rel="modulepreload" href="../_npm/internmap@2.0.3/_esm.js">
+<link rel="modulepreload" href="../_npm/delaunator@5.0.1/_esm.js">
+<link rel="modulepreload" href="../_npm/robust-predicates@3.0.2/_esm.js">
+<link rel="icon" href="../_file/observable.1af93621.png" type="image/png" sizes="32x32">
+<script type="module">
+
+import {define} from "../_observablehq/client.js";
+
+define({id: "853b0f91", inputs: ["Plot","saidi_mensual","display"], body: async (Plot,saidi_mensual,display) => {
+display(await(
+Plot.plot({
+	title: 'SAIDI Q1 2024: LUMA y LuzPR',
+	x: {label: '2024'},
+	y: {label: 'SAIDI (minutos)'},
+	color: {legend: true,
+		domain: ['LUMA', 'LuzPR'],
+		range: ['green', 'blue'],
+	},
+	marks: [
+		Plot.ruleY([0]),
+		Plot.line(saidi_mensual, {
+			x: 'mes',
+			y: 'luma',
+			stroke: 'green',
+			marker: true,
+		}),
+		Plot.line(saidi_mensual, {
+			x: 'mes',
+			y: 'luzpr',
+			stroke: 'blue',
+			marker: true,
+		}),
+	]
+})
+))
+}});
+
+define({id: "f894982e", outputs: ["saidi_mensual"], body: () => {
+const saidi_mensual = [
+	{mes: 'Enero', luma: 63.68, luzpr: 115.43},
+	{mes: 'Febrero', luma: 103.28, luzpr: 213.39},
+	{mes: 'Marzo', luma: 93.23, luzpr: 188.01},
+]
+return {saidi_mensual};
+}});
+
+</script>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="../">LuzPR Journal</a></li>
+  </ol>
+  <ol>
+    <li class="observablehq-link"><a href="../example-dashboard">Example dashboard</a></li>
+    <li class="observablehq-link"><a href="../example-report">Example report</a></li>
+    <li class="observablehq-link observablehq-link-active"><a href="./2024_05_05%20-%20SAIDI%20Q1%202024">SAIDI - Q1 2024</a></li>
+  </ol>
+</nav>
+<script>{Object.assign(document.createElement("a"),{href:""}).password&&location.replace(location.href);const e=document.querySelector("#observablehq-sidebar"),t=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?t.checked=r==="true":t.indeterminate=!0;for(const o of document.querySelectorAll("#observablehq-sidebar summary")){const s=o.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${o.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<aside id="observablehq-toc" data-selector="h1:not(:first-of-type), h2:first-child, :not(h1) + h2">
+<nav>
+<div>Contents</div>
+<ol>
+<li class="observablehq-secondary-link"><a href="#luma---datos-q1-2024">LUMA - datos Q1 2024</a></li>
+<li class="observablehq-secondary-link"><a href="#luzpr---datos-q1-2024">LuzPR - datos Q1 2024</a></li>
+</ol>
+</nav>
+</aside>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<h1 id="saidi---q1-2024" tabindex="-1"><a class="observablehq-header-anchor" href="#saidi---q1-2024">SAIDI - Q1 2024</a></h1>
+<p>Este entry es para dialogar un poco sobre los números SAIDI publicados por LUMA para el Q1 del 2024. El SAIDI en particular es un número que es razonable estimar con los datos recopilados por LuzPR. Cualquier comparación ayudaría entender como las fuentes de datos se asemejan o distinguen.</p>
+<h2 id="luma---datos-q1-2024" tabindex="-1"><a class="observablehq-header-anchor" href="#luma---datos-q1-2024">LUMA - datos Q1 2024</a></h2>
+<p>LUMA publica sus datos de métricas trimestralmente en la página del docket del Negociado de Energía de Puerto Rico. El documento para Q1 2024 está en <a href="https://energia.pr.gov/wp-content/uploads/sites/7/2024/04/Resumen-Metricas-Master_April2024.xlsx" target="_blank" rel="noopener noreferrer">este enlace</a>. Bajo la página de "T&amp;D", aparecen distintos SAIDIs dentro de la "Metric Category" de 'Reliability': 'Monthly SAIDI Distribution', 'Monthly SAIDI Transmission Substation', 'Monthly SAIDI (T&amp;D)', y 'SAIDI (T&amp;D) 12-month rolling average'. El de interés para este ejercicio es el que incluye T&amp;D mensualmente ('Monthly SAIDI (T&amp;D)'). Desde LuzPR no podemos separar transmisión y distribución, solo aproximar el total de minutos sin luz.</p>
+<p>Para el primer trimestre del año, los SAIDI reportados por LUMA son:</p>
+<table>
+<thead>
+<tr>
+<th>Mes</th>
+<th style="text-align:right">SAIDI (minutos)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enero 2024</td>
+<td style="text-align:right">63.68</td>
+</tr>
+<tr>
+<td>Febrero</td>
+<td style="text-align:right">103.28</td>
+</tr>
+<tr>
+<td>Marzo</td>
+<td style="text-align:right">93.23</td>
+</tr>
+</tbody>
+</table>
+<h2 id="luzpr---datos-q1-2024" tabindex="-1"><a class="observablehq-header-anchor" href="#luzpr---datos-q1-2024">LuzPR - datos Q1 2024</a></h2>
+<p>Podemos obtener un SAIDI usando la tabla de <code>clientes_energizados</code> de LuzPR:</p>
+<pre data-language="sql"><code class="language-sql"><span class="hljs-keyword">select</span>
+    date_trunc(<span class="hljs-string">'month'</span>, marca_hora_presentada) <span class="hljs-keyword">as</span> marca_mes_presentada,
+    <span class="hljs-built_in">sum</span>("total_clientes_sin_servicio") <span class="hljs-keyword">as</span> cliente_observaciones_sin_servicio,
+    <span class="hljs-built_in">max</span>(total_clientes) <span class="hljs-keyword">as</span> "total_clientes_suplidos",
+    cliente_observaciones_sin_servicio <span class="hljs-operator">/</span> total_clientes_suplidos <span class="hljs-keyword">as</span> saidi_observaciones,
+    (saidi_observaciones <span class="hljs-operator">*</span> <span class="hljs-number">5</span>).round(<span class="hljs-number">2</span>) <span class="hljs-keyword">as</span> saidi_minutos, <span class="hljs-comment">-- 5 minutos per observacion</span>
+<span class="hljs-keyword">from</span> clientes_energizados
+<span class="hljs-keyword">where</span>
+    date_part(<span class="hljs-string">'year'</span>, marca_hora_presentada) <span class="hljs-operator">=</span> <span class="hljs-number">2024</span>
+    <span class="hljs-keyword">and</span> date_part(<span class="hljs-string">'month'</span>, marca_hora_presentada) <span class="hljs-operator">&lt;=</span> <span class="hljs-number">3</span>
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> marca_mes_presentada
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> marca_mes_presentada
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>marca_mes_presentada</th>
+<th>cliente_observaciones_sin_servicio</th>
+<th>total_clientes_suplidos</th>
+<th>saidi_observaciones</th>
+<th>saidi_minutos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024-01-01</td>
+<td>33894646</td>
+<td>1468223</td>
+<td>23.085489057180006</td>
+<td>115.43</td>
+</tr>
+<tr>
+<td>2024-02-01</td>
+<td>62659899</td>
+<td>1468223</td>
+<td>42.677371897865655</td>
+<td>213.39</td>
+</tr>
+<tr>
+<td>2024-03-01</td>
+<td>55208503</td>
+<td>1468223</td>
+<td>37.60226001091115</td>
+<td>188.01</td>
+</tr>
+</tbody>
+</table>
+<p>Que es bastante distinto a los números de LUMA:</p>
+<table>
+<thead>
+<tr>
+<th>Mes</th>
+<th style="text-align:right">LUMA</th>
+<th style="text-align:right">LuzPR (estimado)</th>
+<th style="text-align:right">Diferencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enero 2024</td>
+<td style="text-align:right">63.68</td>
+<td style="text-align:right">115.43</td>
+<td style="text-align:right">81%</td>
+</tr>
+<tr>
+<td>Febrero</td>
+<td style="text-align:right">103.28</td>
+<td style="text-align:right">213.39</td>
+<td style="text-align:right">107%</td>
+</tr>
+<tr>
+<td>Marzo</td>
+<td style="text-align:right">93.23</td>
+<td style="text-align:right">188.01</td>
+<td style="text-align:right">102%</td>
+</tr>
+</tbody>
+</table>
+<p>Hay que considerar que hay factores que pueden impactar este estimado:</p>
+<ul>
+<li>No todos los apagones duran 5 minutos</li>
+<li>No conocemos exactamente como LUMA calcula estos números</li>
+</ul>
+<p>Para alinear el estimado, tendríamos que cortar mitad de los minutos de las calculaciones de LuzPR. Esto parece excesivo hacerlo sin ser más exhaustivos previo a implementar algo tan drástico.</p>
+<div id="cell-853b0f91" class="observablehq observablehq--block observablehq--loading"></div>
+<div id="cell-f894982e" class="observablehq observablehq--block"></div>
+<pre data-language="js"><code class="language-js"><span class="hljs-keyword">const</span> saidi_mensual = [
+	{<span class="hljs-attr">mes</span>: <span class="hljs-string">'Enero'</span>, <span class="hljs-attr">luma</span>: <span class="hljs-number">63.68</span>, <span class="hljs-attr">luzpr</span>: <span class="hljs-number">115.43</span>},
+	{<span class="hljs-attr">mes</span>: <span class="hljs-string">'Febrero'</span>, <span class="hljs-attr">luma</span>: <span class="hljs-number">103.28</span>, <span class="hljs-attr">luzpr</span>: <span class="hljs-number">213.39</span>},
+	{<span class="hljs-attr">mes</span>: <span class="hljs-string">'Marzo'</span>, <span class="hljs-attr">luma</span>: <span class="hljs-number">93.23</span>, <span class="hljs-attr">luzpr</span>: <span class="hljs-number">188.01</span>},
+]
+</code></pre>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="prev" href="../example-report"><span>Example report</span></a></nav>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-05-07T22:29:30">May 7, 2024</a>.</div>
+</footer>
+</div>
